@@ -13,13 +13,16 @@ use Livewire\Form;
 class LoginForm extends Form
 {
     #[Validate('required|string|email')]
-    public string $email = '';
+//    TODO: Remove saved email
+    public string $email = 'linards@linards.com';
 
     #[Validate('required|string')]
-    public string $password = '';
+//    TODO: Remove saved password
+    public string $password = 'password';
 
     #[Validate('boolean')]
-    public bool $remember = false;
+//    TODO: Remove saved remember
+    public bool $remember = true;
 
     /**
      * Attempt to authenticate the request's credentials.
@@ -30,7 +33,7 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only(['email', 'password']), $this->remember)) {
+        if (!Auth::attempt($this->only(['email', 'password']), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -46,7 +49,7 @@ class LoginForm extends Form
      */
     protected function ensureIsNotRateLimited(): void
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 

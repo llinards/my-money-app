@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
             'date' => '2024-03-27',
         ]);
 
-        Salary::factory()->create([
-            'user_id' => $user->id,
-            'date' => '2024-04-29',
-        ]);
+//        Salary::factory()->create([
+//            'user_id' => $user->id,
+//            'date' => '2024-04-29',
+//        ]);
     }
 }

@@ -6,14 +6,16 @@ use Livewire\Component;
 
 class Salary extends Component
 {
-    public string $date;
-    public float $amount;
+    public string $date = '';
+    public float $amount = 0.00;
 
     public function mount(): void
     {
-        $salary = auth()->user()->salaries()->latest()->first();
-        $this->date = date('d/M/y', strtotime($salary->date));
-        $this->amount = $salary->amount;
+        $salary = auth()->user()->salaries()->latestSalary();
+        if ($salary->exists()) {
+            $this->date = date('Y-m-d', strtotime($salary->date));
+            $this->amount = $salary->amount;
+        }
     }
 
     public function render()

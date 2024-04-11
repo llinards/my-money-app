@@ -2,17 +2,19 @@
 
 namespace App\Livewire;
 
+
+use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
 
 class UpdateSalary extends Component
 {
     public string $date = '';
-    public float $amount = 0;
+    public float $amount;
     public bool $hasSalary = false;
 
     public function mount(): void
     {
-        $salary = auth()->user()->salaries()->latestSalary();
+        $salary = auth()->user()->salaries()->lastSalary();
         if ($salary->exists()) {
             $this->date = date('Y-m-d', strtotime($salary->date));
             $this->amount = $salary->amount;
@@ -25,28 +27,30 @@ class UpdateSalary extends Component
         $user = auth()->user();
 
         $this->validate([
-            'amount' => ['required', 'numeric'],
+//            TODO: fix validation for amount
+            'amount' => 'required|numeric',
             'date' => 'required|date',
         ]);
 
+
         if ($this->hasSalary) {
-            $user->salaries()->latestSalary()->update([
+            $user->salaries()->lastSalary()->update([
                 'date' => $this->date,
                 'amount' => $this->amount,
             ]);
-            session()->flash('success', 'Updated salary successfully!');
+            session()->flash('success', Lang::get('Salary updated!'));
         } else {
             $user->salaries()->create([
                 'date' => $this->date,
                 'amount' => $this->amount,
             ]);
-            session()->flash('success', 'Added salary successfully!');
+            session()->flash('success', Lang::get('Salary created!'));
         }
         $this->redirect(route('dashboard'), navigate: true);
     }
 
     public function render()
     {
-        return view('livewire.update-salary')->title('Update Salary')->layout('layouts.app');
+        return view('livewire.update-salary')->title(Lang::get('Update Salary'))->layout('layouts.app');
     }
 }

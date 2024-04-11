@@ -16,8 +16,10 @@ class Salary extends Model
         $this->belongsTo(User::class);
     }
 
-    public function scopeLatestSalary($query)
+    public function scopeLastSalary($query)
     {
-        return $query->orderBy('date', 'desc')->first();
+        return $query->where('date', '<=', now())
+            ->orderBy('date', 'desc')
+            ->first();
     }
 }

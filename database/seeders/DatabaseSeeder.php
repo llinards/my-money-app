@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -21,10 +20,10 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        Salary::factory()->create([
-            'user_id' => $user->id,
-            'date' => '2024-03-27',
-        ]);
+//        Salary::factory()->create([
+//            'user_id' => $user->id,
+//            'date' => '2024-03-27',
+//        ]);
 
 //        Salary::factory()->create([
 //            'user_id' => $user->id,

@@ -11,9 +11,9 @@ class Salary extends Component
 
     public function mount(): void
     {
-        $salary = auth()->user()->salaries()->latestSalary();
+        $salary = auth()->user()->salaries()->lastSalary();
         if ($salary->exists()) {
-            $this->date = date('Y-m-d', strtotime($salary->date));
+            $this->date = date('d/m/Y', strtotime($salary->date));
             $this->amount = $salary->amount;
         }
     }

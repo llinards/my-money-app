@@ -34,7 +34,7 @@ class Salary extends Model
     public function getDaysUntilNextSalary(): float|int
     {
         $nextSalary = $this->nextSalary();
-        return round(now()->diffInDays(Carbon::parse($nextSalary->date)));
+        return round(now()->diffInDays(Carbon::parse($nextSalary->date))) + 1;
     }
 
     public function getDaysBetweenSalaries(): float|int

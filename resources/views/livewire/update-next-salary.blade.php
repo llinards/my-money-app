@@ -25,6 +25,9 @@
                                 <x-loading-spinner/>
                             </div>
                         </x-primary-button>
+                        <x-secondary-button wire:navigate href="{{route('dashboard')}}">
+                            {{ __('Back') }}
+                        </x-secondary-button>
                     </div>
                 </form>
             </div>

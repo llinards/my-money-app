@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\UpdateAccount;
 use App\Livewire\UpdateNextSalary;
 use App\Livewire\UpdateSalary;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('salary/update', UpdateSalary::class)->name('salary.update');
     Route::get('salary/update/next', UpdateNextSalary::class)->name('salary.update.next');
+    Route::get('account/update', UpdateAccount::class)->name('account.update');
 
     Route::view('profile', 'profile')
         ->name('profile');

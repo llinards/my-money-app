@@ -7,6 +7,7 @@
             <x-status-message/>
             <livewire:salary/>
             <livewire:next-salary/>
+            <livewire:account/>
         </div>
     </div>
 </x-app-layout>

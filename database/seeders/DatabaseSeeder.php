@@ -36,7 +36,14 @@ class DatabaseSeeder extends Seeder
 
         Account::factory()->create([
             'user_id' => $user->id,
-            'balance' => 1000.00
+            'balance' => 1000.00,
+            'daily_limit' => 10.00
+        ]);
+
+        User::factory()->create([
+            'name' => 'Simona Bērtiņa',
+            'email' => 'simona@simona.com',
+            'password' => bcrypt('password'),
         ]);
     }
 }

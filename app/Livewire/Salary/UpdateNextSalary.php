@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Salary;
 
 use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
 
-class UpdateSalary extends Component
+class UpdateNextSalary extends Component
 {
     public string $date = '';
     public float $amount;
 
     public function mount(): void
     {
-        $salary = auth()->user()->salaries()->lastSalary();
+        $salary = auth()->user()->salaries()->nextSalary();
         if ($salary->exists()) {
             $this->date = date('Y-m-d', strtotime($salary->date));
             $this->amount = $salary->amount;
         }
     }
 
-    public function updateSalary(): void
+    public function updateNextSalary(): void
     {
         $user = auth()->user();
 
@@ -29,27 +29,28 @@ class UpdateSalary extends Component
             'date' => 'required|date',
         ]);
 
-        $lastSalary = $user->salaries()->lastSalary();
+        $nextSalary = $user->salaries()->nextSalary();
 
 //        TODO: Update this logic
-        if ($lastSalary->exists()) {
-            $user->salaries()->lastSalary()->update([
+        if ($nextSalary->exists()) {
+            $user->salaries()->nextSalary()->update([
                 'date' => $this->date,
                 'amount' => $this->amount,
             ]);
-            session()->flash('success', Lang::get('Salary updated!'));
+            session()->flash('success', Lang::get('Next Salary updated!'));
         } else {
             $user->salaries()->create([
                 'date' => $this->date,
                 'amount' => $this->amount,
             ]);
-            session()->flash('success', Lang::get('Salary created!'));
+            session()->flash('success', Lang::get('Next Salary created!'));
         }
         $this->redirect(route('dashboard'), navigate: true);
     }
 
+
     public function render()
     {
-        return view('livewire.update-salary')->title(Lang::get('Update Salary'))->layout('layouts.app');
+        return view('livewire.salary.update-next-salary')->title(Lang::get('Update Next Salary'))->layout('layouts.app');
     }
 }

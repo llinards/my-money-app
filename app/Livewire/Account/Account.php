@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Account;
 
 use Carbon\Carbon;
 use Livewire\Component;
@@ -27,7 +27,7 @@ class Account extends Component
 
     public function render()
     {
-        return view('livewire.account');
+        return view('livewire.account.account');
     }
 
     protected function setIsUpdated($account): bool

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Account;
 
 use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
@@ -26,7 +26,7 @@ class UpdateAccount extends Component
             'balance' => 'required|numeric|min:0',
             'dailyLimit' => 'required|numeric|min:0',
         ]);
-        
+
         $account = $user->account()->getAccount();
 
         if ($account->exists()) {
@@ -48,6 +48,6 @@ class UpdateAccount extends Component
 
     public function render()
     {
-        return view('livewire.update-account')->title(Lang::get('Update Account'))->layout('layouts.app');
+        return view('livewire.account.update-account')->title(Lang::get('Update Account'))->layout('layouts.app');
     }
 }

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h3 {
+        @apply text-lg text-left text-gray-800
+    }
+}

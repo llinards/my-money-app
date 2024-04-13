@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Salary;
 
 use Livewire\Component;
 
@@ -22,6 +22,6 @@ class Salary extends Component
 
     public function render()
     {
-        return view('livewire.salary');
+        return view('livewire.salary.salary');
     }
 }

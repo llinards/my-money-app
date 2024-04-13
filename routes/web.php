@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\UpdateAccount;
-use App\Livewire\UpdateNextSalary;
-use App\Livewire\UpdateSalary;
+use App\Livewire\Account\UpdateAccount;
+use App\Livewire\Salary\UpdateNextSalary;
+use App\Livewire\Salary\UpdateSalary;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/dashboard');

@@ -9,7 +9,6 @@ class UpdateNextSalary extends Component
 {
     public string $date = '';
     public float $amount;
-    public bool $hasSalary = false;
 
     public function mount(): void
     {
@@ -17,7 +16,6 @@ class UpdateNextSalary extends Component
         if ($salary->exists()) {
             $this->date = date('Y-m-d', strtotime($salary->date));
             $this->amount = $salary->amount;
-            $this->hasSalary = true;
         }
     }
 
@@ -30,8 +28,11 @@ class UpdateNextSalary extends Component
             'amount' => 'required|numeric',
             'date' => 'required|date',
         ]);
+
+        $nextSalary = $user->salaries()->nextSalary();
+
 //        TODO: Update this logic
-        if ($this->hasSalary) {
+        if ($nextSalary->exists()) {
             $user->salaries()->nextSalary()->update([
                 'date' => $this->date,
                 'amount' => $this->amount,

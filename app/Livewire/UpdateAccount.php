@@ -26,6 +26,7 @@ class UpdateAccount extends Component
             'balance' => 'required|numeric|min:0',
             'dailyLimit' => 'required|numeric|min:0',
         ]);
+        
         $account = $user->account()->getAccount();
 
         if ($account->exists()) {
@@ -35,7 +36,7 @@ class UpdateAccount extends Component
             ]);
             session()->flash('success', Lang::get('Balance info updated!'));
         } else {
-            $user->account()->getAccount()->create([
+            $user->account()->create([
                 'balance' => $this->balance,
                 'daily_limit' => $this->dailyLimit,
             ]);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\UpdateNextSalary;
 use App\Livewire\UpdateSalary;
 use Illuminate\Support\Facades\Route;
 
@@ -8,8 +9,9 @@ Route::redirect('/', '/dashboard');
 Route::group(['middleware' => 'auth'], function () {
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');
-    
+
     Route::get('salary/update', UpdateSalary::class)->name('salary.update');
+    Route::get('salary/update/next', UpdateNextSalary::class)->name('salary.update.next');
 
     Route::view('profile', 'profile')
         ->name('profile');

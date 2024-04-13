@@ -8,6 +8,7 @@ class Salary extends Component
 {
     public string $date = '';
     public float $amount = 0.00;
+    public bool $hasLastSalary = false;
 
     public function mount(): void
     {
@@ -15,6 +16,7 @@ class Salary extends Component
         if ($salary->exists()) {
             $this->date = date('d/m/Y', strtotime($salary->date));
             $this->amount = $salary->amount;
+            $this->hasLastSalary = true;
         }
     }
 

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Account;
+use App\Models\Salary;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -20,14 +22,21 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-//        Salary::factory()->create([
-//            'user_id' => $user->id,
-//            'date' => '2024-03-27',
-//        ]);
+        Salary::factory()->create([
+            'user_id' => $user->id,
+            'date' => '2024-04-01',
+            'amount' => 1000.00
+        ]);
 
-//        Salary::factory()->create([
-//            'user_id' => $user->id,
-//            'date' => '2024-04-29',
-//        ]);
+        Salary::factory()->create([
+            'user_id' => $user->id,
+            'date' => '2024-04-30',
+            'amount' => 1000.00
+        ]);
+
+        Account::factory()->create([
+            'user_id' => $user->id,
+            'balance' => 1000.00
+        ]);
     }
 }

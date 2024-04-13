@@ -2,7 +2,7 @@
     <div class="max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="bg-white mx-auto overflow-hidden shadow-xl rounded-lg w-full sm:w-1/2">
             <div class="mx-auto p-6">
-                <form wire:submit="updateSalary" class="space-y-6">
+                <form wire:submit="updateNextSalary" class="space-y-6">
                     <div>
                         <x-input-label for="amount" :value="__('Amount')"/>
                         <x-text-input wire:model="amount" name="amount" type="text"

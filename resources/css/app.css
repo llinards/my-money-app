@@ -4,6 +4,6 @@
 
 @layer base {
     h3 {
-        @apply text-lg text-left text-gray-800
+        @apply text-left text-lg text-gray-800;
     }
 }
